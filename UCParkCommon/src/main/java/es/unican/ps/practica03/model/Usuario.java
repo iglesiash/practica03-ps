@@ -3,10 +3,6 @@ package es.unican.ps.practica03.model;
 import java.util.LinkedList;
 import java.util.List;
 
-import es.unican.ps.practica03.business.Denuncia;
-import es.unican.ps.practica03.business.Estacionamiento;
-import es.unican.ps.practica03.business.Vehiculo;
-
 public class Usuario {
 	private String email;
 	private String password;

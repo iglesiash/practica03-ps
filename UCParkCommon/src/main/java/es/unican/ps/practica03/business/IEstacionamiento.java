@@ -1,5 +1,7 @@
 package es.unican.ps.practica03.business;
 
+import es.unican.ps.practica03.common.*;
+
 public interface IEstacionamiento {
 
 	public Estacionamiento consultEstacionamiento(String matricula);
