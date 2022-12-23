@@ -21,17 +21,17 @@ public class Usuario implements IUsuario {
 		metodosPago = new LinkedList<MedioPago>();
 		vehiculos = new LinkedList<Vehiculo>();
 	}
-
+	
 	public List<Denuncia> consultReports() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	public List<Estacionamiento> consultEstacionamientos() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	public List<Vehiculo> consultVehicles() {
 		// TODO Auto-generated method stub
 		return null;

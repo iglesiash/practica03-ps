@@ -2,7 +2,9 @@ package es.unican.ps.practica03.model;
 
 import java.util.Date;
 
-public class Denuncia {
+import es.unican.ps.practica03.business.IDenuncia;
+
+public class Denuncia implements IDenuncia {
 	private String id;
 	private Date date;
 	private double price;
@@ -19,7 +21,7 @@ public class Denuncia {
 		this.vehiculoDenunciado = vehicle;
 		this.usuarioDenunciado = denunciado;
 	}
-	
+
 	public void reportEstacionamiento(Vehiculo vehicle, String description, double price) {
 		// TODO Auto-generated method stub
 		
@@ -29,6 +31,4 @@ public class Denuncia {
 		// TODO Auto-generated method stub
 		
 	}
-
-	
 }

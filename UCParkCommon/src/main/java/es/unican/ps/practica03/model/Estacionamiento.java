@@ -2,7 +2,9 @@ package es.unican.ps.practica03.model;
 
 import java.util.Date;
 
-public class Estacionamiento {
+import es.unican.ps.practica03.business.IEstacionamiento;
+
+public class Estacionamiento implements IEstacionamiento {
 	private String idEstacionamiento;
 	private double price;
 	private int minutes;

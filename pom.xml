@@ -6,15 +6,15 @@
   <packaging>pom</packaging>
   
   <properties>
-  	<maven.compiler.source>11</maven.compiler.source>
-  	<maven.compiler.target>11</maven.compiler.target>
+	<maven.compiler.source>11</maven.compiler.source>
+	<maven.compiler.target>11</maven.compiler.target>
   </properties>
-
+  
   <modules>
-  	<module>UCParkBusiness</module>
+  	<module>UCPark</module>
   	<module>UCParkDAO</module>
   	<module>UCParkWeb</module>
-  	<module>UCPark</module>
+  	<module>UCParkBusiness</module>
   	<module>UCParkCommon</module>
   </modules>
 </project>

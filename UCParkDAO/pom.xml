@@ -6,12 +6,11 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>UCParkDAO</artifactId>
-  
   <dependencies>
-		<dependency>
-			<groupId>es.unican.ps</groupId>
-			<artifactId>UCParkCommon</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-	</dependencies>
+  	<dependency>
+  		<groupId>es.unican.ps</groupId>
+  		<artifactId>UCParkCommon</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
 </project>

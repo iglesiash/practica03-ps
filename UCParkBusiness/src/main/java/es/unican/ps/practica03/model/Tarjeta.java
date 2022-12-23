@@ -1,4 +1,4 @@
-package es.unican.ps.practica03.common;
+package es.unican.ps.practica03.model;
 
 public class Tarjeta extends MedioPago {
 	private String numero;

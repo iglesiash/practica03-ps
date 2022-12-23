@@ -5,7 +5,7 @@ import java.util.List;
 
 import es.unican.ps.practica03.business.IVehiculo;
 
-public class Vehiculo {
+public class Vehiculo implements IVehiculo {
 	private String matricula;
 	private String marca;
 	private String modelo;
@@ -19,5 +19,17 @@ public class Vehiculo {
 		
 		estacionamientoEnVigor = null;
 		currentReports = new LinkedList<Denuncia>();
+	}
+
+	
+	public Vehiculo registerVehiculo(Vehiculo vehicle) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	public Vehiculo deleteVehiculo(String matricula) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

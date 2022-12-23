@@ -9,15 +9,4 @@
   <packaging>ear</packaging>
   
   
-  
-  <dependencies>
-   
-  <!-- https://mvnrepository.com/artifact/maven/maven-ear-plugin -->
-<dependency>
-    <groupId>maven</groupId>
-    <artifactId>maven-ear-plugin</artifactId>
-    <version>1.9</version>
-</dependency>
-  </dependencies>
-
 </project>
