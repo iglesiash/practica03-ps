@@ -2,7 +2,7 @@ name: Standard Maven CI
 on:
  push:
   branches:
-   - master
+   - main
    - develop
 jobs:
  build:
