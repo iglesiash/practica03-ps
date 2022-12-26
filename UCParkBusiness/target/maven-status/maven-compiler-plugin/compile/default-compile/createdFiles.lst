@@ -1,12 +1,12 @@
 es/unican/ps/practica03/model/Vehiculo.class
 es/unican/ps/practica03/model/Tarjeta.class
-es/unican/ps/practica03/business/IUsuario.class
+es/unican/ps/practica03/business/IUser.class
 es/unican/ps/practica03/model/MedioPago.class
-es/unican/ps/practica03/model/Usuario.class
+es/unican/ps/practica03/model/User.class
 es/unican/ps/practica03/model/Estacionamiento.class
 es/unican/ps/practica03/business/IVehiculo.class
-es/unican/ps/practica03/model/UsuarioAnonimo.class
+es/unican/ps/practica03/model/UserAnonimo.class
 es/unican/ps/practica03/model/Denuncia.class
 es/unican/ps/practica03/business/IEstacionamiento.class
 es/unican/ps/practica03/business/IDenuncia.class
-es/unican/ps/practica03/business/IUsuarioAnonimo.class
+es/unican/ps/practica03/business/IUserAnonimo.class
