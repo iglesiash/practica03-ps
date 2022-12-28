@@ -9,14 +9,16 @@ import es.unican.ps.practica03.model.Report;
 import es.unican.ps.practica03.model.User;
 import es.unican.ps.practica03.model.Vehicle;
 import es.unican.ps.practica03.persistence.IUsersDAO;
+import jakarta.ejb.EJB;
+import jakarta.ejb.Stateless;
 
+@Stateless
 public class UserManagement implements IAnonymousUser, IUser {
-
+	
+	@EJB
 	private IUsersDAO usersDao;
 
-	public UserManagement(IUsersDAO usersDao) {
-		this.usersDao = usersDao;
-	}
+	public UserManagement() { }
 
 	@Override
 	public List<Report> consultReports(String email) {
@@ -29,7 +31,7 @@ public class UserManagement implements IAnonymousUser, IUser {
 	}
 
 	@Override
-	public List<Parking> consultCurrentParkingList(String email) throws OperacionNoValida {
+	public List<Parking> consultCurrentParkingList(String email) throws InvalidOperation {
 		User user = usersDao.getUser(email);
 		
 		List<Parking> currentParking = new LinkedList<>();
@@ -40,10 +42,10 @@ public class UserManagement implements IAnonymousUser, IUser {
 	}
 
 	@Override
-	public void register(User user, PaymentMethod paymentMethod) throws OperacionNoValida {
+	public void register(User user, PaymentMethod paymentMethod) throws InvalidOperation {
 		User searchedUser = usersDao.getUser(user.getEmail());
 		if (searchedUser != null) {
-			throw new OperacionNoValida("User already registered");
+			throw new InvalidOperation("User already registered");
 		}
 
 		usersDao.addUser(user);

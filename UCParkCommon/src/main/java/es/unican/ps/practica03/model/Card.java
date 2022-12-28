@@ -1,13 +1,13 @@
 package es.unican.ps.practica03.model;
 
 public class Card extends PaymentMethod {
-	private String numero;
+	private String number;
 	private String cvc;
-	private String titular;
+	private String owner;
 	
-	public Card(String numero, String cvc, String titular) {
-		this.numero = numero;
+	public Card(String number, String cvc, String owner) {
+		this.number = number;
 		this.cvc = cvc;
-		this.titular = titular;
+		this.owner = owner;
 	}
 }
