@@ -2,8 +2,6 @@ package es.unican.ps.practica03.model;
 
 import java.util.Date;
 
-import es.unican.ps.practica03.business.IReport;
-
 public class Report {
 	private Date date;
 	private double price;

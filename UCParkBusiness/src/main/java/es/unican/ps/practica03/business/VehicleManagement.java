@@ -19,7 +19,7 @@ public class VehicleManagement implements IVehicle {
 	public VehicleManagement() { }
 
 	@Override
-	public boolean registerVehicle(Vehicle vehicle, User user) {
+	public boolean registerVehicle(Vehicle vehicle, User user) throws InvalidOperation {
 		if (vehiclesDao.addVehicle(vehicle)) {
 			throw new InvalidOperation("This vehicle has already been registered.");
 		}

@@ -10,4 +10,16 @@ public class Card extends PaymentMethod {
 		this.cvc = cvc;
 		this.owner = owner;
 	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public String getCvc() {
+		return cvc;
+	}
+
+	public String getOwner() {
+		return owner;
+	}
 }

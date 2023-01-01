@@ -21,7 +21,7 @@ public class ParkingManagement implements IParking {
 	public ParkingManagement() { }
 
 	@Override
-	public Parking consultParking(String numberPlate) {
+	public Parking consultParking(String numberPlate) throws InvalidOperation {
 		Vehicle vehicle = vehiclesDao.getVehicle(numberPlate);
 		if (vehicle == null) {
 			throw new InvalidOperation("There are no vehicles with the inserted number plate.");
@@ -47,7 +47,7 @@ public class ParkingManagement implements IParking {
 	}
 
 	@Override
-	public Parking extendParkingTime(long parkingId, int minutes) {
+	public Parking extendParkingTime(long parkingId, int minutes) throws InvalidOperation {
 		Parking parking = parkingDao.getParking(parkingId);
 		Vehicle vehicle = parking.getVehicle();
 		
