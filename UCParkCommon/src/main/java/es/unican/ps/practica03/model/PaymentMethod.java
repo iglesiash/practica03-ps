@@ -11,6 +11,6 @@ import jakarta.persistence.Table;
 @Entity @Table(name = "Payment")
 public abstract class PaymentMethod implements Serializable {
 	@Id @GeneratedValue
-	private int id;
+	private long id;
 	
 }

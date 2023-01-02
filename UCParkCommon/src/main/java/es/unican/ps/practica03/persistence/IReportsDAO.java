@@ -43,7 +43,7 @@ public interface IReportsDAO {
 	public boolean deleteReport(long id);
 	
 	/**
-	 * Deletes a report.
+	 * Deletes a specific report
 	 * @param report the report
 	 * @return true if the report could be deleted, false otherwise
 	 */

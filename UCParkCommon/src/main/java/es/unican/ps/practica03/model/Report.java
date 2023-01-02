@@ -60,4 +60,8 @@ public class Report implements Serializable {
 	public void setReportedVehicle(Vehicle reportedVehicle) {
 		this.reportedVehicle = reportedVehicle;
 	}
+
+	public long getId() {
+		return id;
+	}
 }
