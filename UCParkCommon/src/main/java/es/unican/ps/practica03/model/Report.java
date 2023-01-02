@@ -1,18 +1,32 @@
 package es.unican.ps.practica03.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Report {
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@SuppressWarnings("serial")
+@Entity
+public class Report implements Serializable {
+	@Id
+	private long id;
 	private Date date;
 	private double price;
 	private String cause;
+	
+	@Column(name = "vehicle")
 	private Vehicle reportedVehicle;
+	
+	public Report() {}
 	
 	public Report(Date date, double price, String cause, Vehicle vehicle) {
 		this.date = date;
 		this.price = price;
 		this.cause = cause;
 		this.reportedVehicle = vehicle;
+
 	}
 
 	public Date getDate() {

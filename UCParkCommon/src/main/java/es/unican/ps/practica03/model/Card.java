@@ -1,9 +1,14 @@
 package es.unican.ps.practica03.model;
 
-public class Card extends PaymentMethod {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Card extends PaymentMethod implements Serializable {
 	private String number;
 	private String cvc;
 	private String owner;
+	
+	public Card() { }
 	
 	public Card(String number, String cvc, String owner) {
 		this.number = number;

@@ -22,7 +22,13 @@ public class UserManagement implements IAnonymousUser, IUser {
 
 	@Override
 	public List<Report> consultReports(String email) {
-		return usersDao.getUser(email).getActiveReports();
+		List<Report> reports = new LinkedList<>();
+		User user = usersDao.getUser(email);
+		for (Vehicle vehicle: user.getVehicles()) {
+			reports.addAll(vehicle.getCurrentReports());
+		}
+		
+		return reports;
 	}
 
 	@Override
