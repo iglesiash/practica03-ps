@@ -2,8 +2,6 @@ package es.unican.ps.practica03.model;
 
 import java.util.Date;
 
-import es.unican.ps.practica03.business.IParking;
-
 public class Parking {
 	private double price;
 	private int minutes;

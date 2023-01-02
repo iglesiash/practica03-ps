@@ -4,21 +4,24 @@ import es.unican.ps.practica03.model.User;
 import es.unican.ps.practica03.model.Vehicle;
 import es.unican.ps.practica03.persistence.IUsersDAO;
 import es.unican.ps.practica03.persistence.IVehiclesDAO;
+import jakarta.ejb.EJB;
+import jakarta.ejb.Stateless;
 
+@Stateless
 public class VehicleManagement implements IVehicle {
-
+	
+	@EJB
 	private IVehiclesDAO vehiclesDao;
+	
+	@EJB
 	private IUsersDAO usersDao;
 
-	public VehicleManagement(IVehiclesDAO vehiclesDao, IUsersDAO usersDao) {
-		this.vehiclesDao = vehiclesDao;
-		this.usersDao = usersDao;
-	}
+	public VehicleManagement() { }
 
 	@Override
-	public boolean registerVehicle(Vehicle vehicle, User user) {
+	public boolean registerVehicle(Vehicle vehicle, User user) throws InvalidOperation {
 		if (vehiclesDao.addVehicle(vehicle)) {
-			throw new OperacionNoValida("This vehicle has already been registered.");
+			throw new InvalidOperation("This vehicle has already been registered.");
 		}
 		return user.addVehicle(vehicle);
 	}

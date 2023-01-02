@@ -8,6 +8,14 @@
   <artifactId>UCParkWeb</artifactId>
   <packaging>war</packaging>
   
+  <dependencies>
+  	<dependency>
+  		<groupId>es.unican.ps</groupId>
+  		<artifactId>UCParkCommon</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
+  
 <build>
 <plugins>
 

@@ -6,36 +6,39 @@ import es.unican.ps.practica03.model.Parking;
 import es.unican.ps.practica03.model.Vehicle;
 import es.unican.ps.practica03.persistence.IParkingDAO;
 import es.unican.ps.practica03.persistence.IVehiclesDAO;
+import jakarta.ejb.EJB;
+import jakarta.ejb.Stateless;
 
+@Stateless
 public class ParkingManagement implements IParking {
-
+	
+	@EJB
 	private IParkingDAO parkingDao;
+	
+	@EJB
 	private IVehiclesDAO vehiclesDao;
 	
-	public ParkingManagement(IParkingDAO parkingDao, IVehiclesDAO vehiclesDao) {
-		this.parkingDao	= parkingDao;
-		this.vehiclesDao = vehiclesDao;
-	}
+	public ParkingManagement() { }
 
 	@Override
-	public Parking consultParking(String numberPlate) {
+	public Parking consultParking(String numberPlate) throws InvalidOperation {
 		Vehicle vehicle = vehiclesDao.getVehicle(numberPlate);
 		if (vehicle == null) {
-			throw new OperacionNoValida("There are no vehicles with the inserted number plate.");
+			throw new InvalidOperation("There are no vehicles with the inserted number plate.");
 		}
 		
 		return vehicle.getActiveParking();
 	}
 
 	@Override
-	public void registerParking(Vehicle vehicle, int minutes)  throws OperacionNoValida {
+	public void registerParking(Vehicle vehicle, int minutes)  throws InvalidOperation {
 		if (vehicle.getActiveParking() != null) {
-			throw new OperacionNoValida("This vehicle already has an active parking.");
+			throw new InvalidOperation("This vehicle already has an active parking.");
 		}
 		
 		if (minutes > 120 || minutes <= 0) {
-			throw new OperacionNoValida("The number of minutes is negative or exceeds the overall "
-					+ "time limit of 120 minutes.");
+			throw new InvalidOperation("The number of minutes is negative, zero or exceeds the"
+					+ "overall time limit of 120 minutes.");
 		}
 		
 		Date now = new Date();
@@ -44,12 +47,16 @@ public class ParkingManagement implements IParking {
 	}
 
 	@Override
-	public Parking extendParkingTime(long parkingId, int minutes) {
+	public Parking extendParkingTime(long parkingId, int minutes) throws InvalidOperation {
 		Parking parking = parkingDao.getParking(parkingId);
 		Vehicle vehicle = parking.getVehicle();
 		
+		if (minutes <= 0) {
+			throw new InvalidOperation("The number of minutes is not valid.");
+		}
+		
 		if (vehicle.getActiveParking().getMinutes() + minutes > 120) {
-			throw new OperacionNoValida("The inserted time exceeds the overall time limit "
+			throw new InvalidOperation("The inserted time exceeds the overall time limit "
 					+ "of 120 minutes.");
 		}
 		

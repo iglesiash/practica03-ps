@@ -4,8 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
-import es.unican.ps.practica03.business.IVehicle;
-
 public class Vehicle {
 	private String numberPlate;
 	private String brand;
