@@ -1,9 +1,8 @@
 package es.unican.ps.practica03.business;
 
-import es.unican.ps.practica03.model.*;
-import jakarta.ejb.Remote;
+import es.unican.ps.practica03.model.Parking;
+import es.unican.ps.practica03.model.Vehicle;
 
-@Remote
 public interface IParking {
 
 	public Parking consultParking(String numberPlate);
