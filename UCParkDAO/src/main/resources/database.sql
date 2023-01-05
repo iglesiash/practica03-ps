@@ -21,7 +21,7 @@ create table Vehicle (
 create table Parking (
 	id int primary key,
 	startTime datetime not null, 
-	minutes int  not null, --TODO: alter table
+	minutes int  not null,
 	price decimal(4,2),
 	vehicle char(8) not null,
 	

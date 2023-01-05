@@ -14,6 +14,12 @@ public class VehiclesDAO implements IVehiclesDAO {
 	@PersistenceContext(unitName = "UCParkPU")
 	private EntityManager em;
 
+	public VehiclesDAO() { }
+
+	public VehiclesDAO(EntityManager em) {
+		this.em = em;
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override 
 	public List<Vehicle> getVehicles() {
@@ -59,18 +65,17 @@ public class VehiclesDAO implements IVehiclesDAO {
 
 	@Override
 	public boolean deleteVehicle(String numberPlate) {
-		Vehicle vehicle = getVehicle(numberPlate);
-		if (vehicle == null) {
-			return false;
-		}
 		try {
-			Query query = em.createQuery("delete from Vehicle v where v.numberPlate = :numberPlate");
-			query.setParameter("numberPlate", numberPlate);
-			query.executeUpdate();
-		} catch (Exception e) {
+			Vehicle vehicle = getVehicle(numberPlate);
+			if (vehicle != null) { // Vehicle exists
+				em.remove(numberPlate);
+				return true;
+			}
+			else { // Vehicle doesn't exist
+				return false;
+			}
+		} catch (IllegalArgumentException e) {
 			return false;
 		}
-		return true;
 	}
-
 }

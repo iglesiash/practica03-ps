@@ -10,7 +10,7 @@ public interface IParkingDAO {
 	 * Returns the list of parking.
 	 * @return the list of parking.
 	 */
-	public List<Parking> getParkings();
+	public List<Parking> getParkingList();
 	
 	/**
 	 * Returns the parking associated to an id.

@@ -14,6 +14,12 @@ public class UsersDAO implements IUsersDAO {
 	@PersistenceContext(unitName = "UCParkPU")
 	private EntityManager em;
 
+	public UsersDAO() { }
+
+	public UsersDAO(EntityManager em) {
+		this.em = em;
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override 
 	public List<User> getUsers() {
@@ -59,17 +65,17 @@ public class UsersDAO implements IUsersDAO {
 
 	@Override
 	public boolean deleteUser(String email) {
-		User user = getUser(email);
-		if (user == null) {
-			return false;
-		}
 		try {
-			Query query = em.createQuery("delete from User u where u.email = :email");
-			query.setParameter("email", email);
-			query.executeUpdate();
-		} catch (Exception e) {
+			User user = getUser(email);
+			if (user != null) { // User exists
+				em.remove(email);
+				return true;
+			}
+			else { // User doesn't exist
+				return false;
+			}
+		} catch (IllegalArgumentException e) {
 			return false;
 		}
-		return true;
 	}
 }

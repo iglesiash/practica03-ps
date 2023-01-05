@@ -5,12 +5,14 @@ import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @SuppressWarnings("serial")
 @Entity
 public class Report implements Serializable {
-	@Id
+	
+	@Id @GeneratedValue
 	private long id;
 	private Date date;
 	private double price;

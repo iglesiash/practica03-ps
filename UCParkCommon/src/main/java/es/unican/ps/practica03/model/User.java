@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @SuppressWarnings("serial")
 @Entity
@@ -23,12 +24,17 @@ public class User implements Serializable {
 	
 	@OneToMany @JoinColumn (name = "owner")
 	private List<Vehicle> vehicles;
+	
+	@Transient
+	private double balance;
 
 	public User(String email, String password) {
 		this.email = email;
 		this.password = password;
 		paymentMethods = new LinkedList<PaymentMethod>();
 		vehicles = new LinkedList<Vehicle>();
+		
+		balance = 0;
 	}
 
 	public String getEmail() {
@@ -78,8 +84,19 @@ public class User implements Serializable {
 	}
 
 	public boolean removeVehicle(Vehicle vehicle) {
-		return vehicles.remove(vehicle);
-		
+		return vehicles.remove(vehicle);	
+	}
+
+	public boolean charge(double price) {
+		if (balance - price < 0) {
+			return false;
+		}
+		balance -= price;
+		return true;
+	}
+	
+	public void addPaymentMethod(PaymentMethod paymentMethod) {
+		paymentMethods.add(paymentMethod);
 	}
 	
 }

@@ -14,6 +14,12 @@ public class ReportsDAO implements IReportsDAO {
 
 	@PersistenceContext(unitName = "UCParkPU")
 	private EntityManager em;
+	
+	public ReportsDAO() { }
+	
+	public ReportsDAO(EntityManager em) {
+		this.em = em;
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override 
@@ -60,18 +66,18 @@ public class ReportsDAO implements IReportsDAO {
 
 	@Override
 	public boolean deleteReport(long id) {
-		Report report = getReport(id);
-		if (report == null) {
-			return false;
-		}
 		try {
-			Query query = em.createQuery("delete from Report r where r.id = :id");
-			query.setParameter("id", id);
-			query.executeUpdate();
-		} catch (Exception e) {
+			Report parking = getReport(id);
+			if (parking != null) { // Report exists
+				em.remove(id);
+				return true;
+			}
+			else { // Report doesn't exist
+				return false;
+			}
+		} catch (IllegalArgumentException e) {
 			return false;
 		}
-		return true;
 	}
 
 	@Override

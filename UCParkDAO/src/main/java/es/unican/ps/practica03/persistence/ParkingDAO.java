@@ -15,10 +15,16 @@ public class ParkingDAO implements IParkingDAO {
 
 	@PersistenceContext(unitName = "UCParkPU")
 	private EntityManager em;
+	
+	public ParkingDAO() { }
+	
+	public ParkingDAO(EntityManager em) {
+		this.em = em;
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override 
-	public List<Parking> getParkings() {
+	public List<Parking> getParkingList() {
 		Query query = em.createQuery("select p from Parking p");
 		return query.getResultList();
 	}
@@ -46,6 +52,9 @@ public class ParkingDAO implements IParkingDAO {
 		} catch (EntityExistsException e) {
 			//  Parking already exists in the database
 			return false;
+		} catch (IllegalArgumentException e) {
+			// Argument is not a parking
+			return false;
 		}
 	}
 
@@ -61,17 +70,17 @@ public class ParkingDAO implements IParkingDAO {
 
 	@Override
 	public boolean deleteParking(long id) {
-		Parking parking = getParking(id);
-		if (parking == null) {
-			return false;
-		}
 		try {
-			Query query = em.createQuery("delete from Parking p where p.id = :id");
-			query.setParameter("id", id);
-			query.executeUpdate();
-		} catch (Exception e) {
+			Parking parking = getParking(id);
+			if (parking != null) { // Parking exists
+				em.remove(id);
+				return true;
+			}
+			else { // Parking doesn't exist
+				return false;
+			}
+		} catch (IllegalArgumentException e) {
 			return false;
 		}
-		return true;
 	}
 }

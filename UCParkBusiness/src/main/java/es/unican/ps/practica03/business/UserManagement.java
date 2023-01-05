@@ -37,7 +37,7 @@ public class UserManagement implements IAnonymousUser, IUser {
 	}
 
 	@Override
-	public List<Parking> consultCurrentParkingList(String email) throws InvalidOperation {
+	public List<Parking> consultCurrentParkingList(String email) {
 		User user = usersDao.getUser(email);
 		
 		List<Parking> currentParking = new LinkedList<>();
@@ -53,7 +53,7 @@ public class UserManagement implements IAnonymousUser, IUser {
 		if (searchedUser != null) {
 			throw new InvalidOperation("User already registered");
 		}
-
+		user.addPaymentMethod(paymentMethod);
 		usersDao.addUser(user);
 	}
 

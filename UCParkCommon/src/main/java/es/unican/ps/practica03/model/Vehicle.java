@@ -16,6 +16,8 @@ import jakarta.persistence.Transient;
 @Entity
 public class Vehicle implements Serializable {
 	
+	private static final double PRICE_PER_MINUTE = 0.2; // 20 cents per minute
+	
 	@Id private String numberPlate;
 	private String brand;
 	private String model;
@@ -100,8 +102,15 @@ public class Vehicle implements Serializable {
 		this.currentReports = currentReports;
 	}
 
-	public void addParking(Parking parking) {
-		activeParking = parking;	
+	public boolean addParking(Parking parking) {
+		activeParking = parking;
+		activeParking.setPrice(parking.getMinutes() * PRICE_PER_MINUTE);
+		return owner.charge(parking.getPrice());
+	}
+
+	public void finishParking() {
+		parkingHistory.add(activeParking);
+		activeParking = null;
 	}
 
 	public boolean addReport(Report report) {
@@ -112,8 +121,10 @@ public class Vehicle implements Serializable {
 		return currentReports.remove(report);
 	}
 
-	public void finishParking() {
-		parkingHistory.add(activeParking);
-		activeParking = null;
+	public boolean editParking(int minutes) {
+		int currentMinutes = activeParking.getMinutes();
+		activeParking.setMinutes(minutes + currentMinutes);
+
+		return owner.charge(minutes * PRICE_PER_MINUTE); // Only charges the new minutes
 	}
 }
