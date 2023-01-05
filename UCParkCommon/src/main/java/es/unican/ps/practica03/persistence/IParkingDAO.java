@@ -10,7 +10,7 @@ public interface IParkingDAO {
 	 * Returns the list of parking.
 	 * @return the list of parking.
 	 */
-	public List<Parking> getParkings();
+	public List<Parking> getParkingList();
 	
 	/**
 	 * Returns the parking associated to an id.
@@ -25,7 +25,7 @@ public interface IParkingDAO {
 	 * @param Parking the parking to be added
 	 * @return true if the parking could be added, false otherwise
 	 */
-	public boolean addParking(Parking Parking);
+	public boolean addParking(Parking parking);
 	
 	/**
 	 * Modifies a parking.

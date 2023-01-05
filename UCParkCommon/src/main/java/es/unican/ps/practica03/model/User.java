@@ -1,23 +1,40 @@
 package es.unican.ps.practica03.model;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-public class User {
-	private String email;
-	private String password;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
+@SuppressWarnings("serial")
+@Entity
+@Table(name = "Ucpark_user")
+public class User implements Serializable {
 	
-	private List<Report> activeReports;
+	@Id private String email;
+	private String password;
+
+	@OneToMany @JoinColumn (name = "owner")
 	private List<PaymentMethod> paymentMethods;
+	
+	@OneToMany @JoinColumn (name = "owner")
 	private List<Vehicle> vehicles;
+	
+	@Transient
+	private double balance;
 
 	public User(String email, String password) {
 		this.email = email;
 		this.password = password;
-		
-		activeReports = new LinkedList<Report>();
 		paymentMethods = new LinkedList<PaymentMethod>();
 		vehicles = new LinkedList<Vehicle>();
+		
+		balance = 0;
 	}
 
 	public String getEmail() {
@@ -34,14 +51,6 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public List<Report> getActiveReports() {
-		return activeReports;
-	}
-
-	public void setActiveReports(List<Report> activeReports) {
-		this.activeReports = activeReports;
 	}
 
 	public List<PaymentMethod> getPaymentMethods() {
@@ -69,23 +78,25 @@ public class User {
 		return parkingHistory;
 	}
 	
-	public void addReport(Report report) {
-		activeReports.add(report);
-	}
-
-	public void removeReport(Report report) {
-		activeReports.remove(report);
-		
-	}
-
 	public boolean addVehicle(Vehicle vehicle) {
 		return vehicles.add(vehicle);
 		
 	}
 
 	public boolean removeVehicle(Vehicle vehicle) {
-		return vehicles.remove(vehicle);
-		
+		return vehicles.remove(vehicle);	
+	}
+
+	public boolean charge(double price) {
+		if (balance - price < 0) {
+			return false;
+		}
+		balance -= price;
+		return true;
+	}
+	
+	public void addPaymentMethod(PaymentMethod paymentMethod) {
+		paymentMethods.add(paymentMethod);
 	}
 	
 }
