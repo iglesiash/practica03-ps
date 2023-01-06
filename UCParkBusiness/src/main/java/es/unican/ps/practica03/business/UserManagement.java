@@ -57,4 +57,13 @@ public class UserManagement implements IAnonymousUser, IUser {
 		usersDao.addUser(user);
 	}
 
+	@Override
+	public User login(User user) {
+		User searchedUser = usersDao.getUser(user.getEmail());
+		if (searchedUser == null) {
+			throw new InvalidOperation("No user found with this email");
+		}
+		return user;
+	}
+
 }
