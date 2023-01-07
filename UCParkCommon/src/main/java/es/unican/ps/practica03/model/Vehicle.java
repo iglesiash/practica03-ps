@@ -16,7 +16,7 @@ import jakarta.persistence.Transient;
 @Entity
 public class Vehicle implements Serializable {
 	
-	private static final double PRICE_PER_MINUTE = 0.2; // 20 cents per minute
+	private static final double PRICE_PER_MINUTE = 0.01; // 1 cent per minute
 	
 	@Id private String numberPlate;
 	private String brand;
