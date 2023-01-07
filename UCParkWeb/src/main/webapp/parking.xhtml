@@ -7,13 +7,13 @@
 </h:head>
 
 <h:body>
-	<h1>Home</h1>
-        <h:commandButton value="Queries" action="#{loggedInBean.queries}" />
-        <h:commandButton value="Parking" action="#{loggedInBean.parking}" />
-        
-        <!-- Both of these are not implemented -->
-        <h:commandButton value="Vehicles" action="#{loggedInBean.vehicles}" />
-        <h:commandButton value="Reports" action="#{loggedInBean.reports}" />
-	</h:form>
+	<h1>Parking management</h1>
+    
+    <h:link value=“Home” outcome=“index.xhtml”/>
+    <h:commandButton value="Active parking list" action="#{loggedInBean.parking}" />
+    
+    <!-- Both of these are not implemented -->
+    <h:commandButton value="New parking" action="#{loggedInBean.newParking}" />
+    <h:commandButton value="Extend parking time" action="#{loggedInBean.extendParkingTime}" />
 </h:body>
 </html>

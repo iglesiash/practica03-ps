@@ -20,6 +20,7 @@ es\unican\ps\practica03\business\IVehicleRemote.class
 es\unican\ps\practica03\business\IVehicleLocal.class
 es\unican\ps\practica03\business\IUser.class
 es\unican\ps\practica03\business\IAnonymousUser.class
+es\unican\ps\practica03\business\IAnonymousUserLocal.class
 es\unican\ps\practica03\business\IParkingRemote.class
 es\unican\ps\practica03\persistence\IReportsDAO.class
 es\unican\ps\practica03\business\IVehicle.class

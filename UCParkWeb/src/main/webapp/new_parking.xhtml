@@ -7,25 +7,16 @@
 </h:head>
 
 <h:body>
-	<h1>Sign up</h1>
+	<h1>New parking</h1>
 	<h:form>
 		<h:panelGrid columns="2">
-			<h:outputLabel value="E-mail" />
-			<h:inputText value="#{userBean.email}" />
+			<h:outputLabel value="Number plate" />
+			<h:inputText value="#{loggedInBean.numberPlate}" />
 
-			<h:outputLabel value="Password" />
-			<h:inputSecret value="#{userBean.password}" />
-
-			<h:outputLabel value="Card number" />
-			<h:inputText value="#{userBean.cardNumber}" />
-
-			<h:outputLabel value="CVC" />
-			<h:inputText value="#{userBean.cvc}" />
-
-			<h:outputLabel value="Owner" />
-			<h:inputText value="#{userBean.owner}" />
+			<h:outputLabel value="Minutes" />
+			<h:inputText value="#{userBean.minutes}" />
 			
-			<h:commandButton value="Sign up" action="#{userBean.signUp}" />
+			<h:commandButton value="Save" action="#{loggedInBean.newParking}" />
 		</h:panelGrid>
 	</h:form>
 </h:body>
