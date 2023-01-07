@@ -69,6 +69,14 @@ public class User implements Serializable {
 		this.vehicles = vehicles;
 	}
 
+	public double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+
 	public List<Parking> getParkingHistory() {
 		List<Parking> parkingHistory = new LinkedList<>();
 		
@@ -80,7 +88,6 @@ public class User implements Serializable {
 	
 	public boolean addVehicle(Vehicle vehicle) {
 		return vehicles.add(vehicle);
-		
 	}
 
 	public boolean removeVehicle(Vehicle vehicle) {

@@ -20,6 +20,11 @@ public class ParkingManagement implements IParking {
 
 	public ParkingManagement() { }
 
+	public ParkingManagement(IParkingDAO parkingDao, IVehiclesDAO vehiclesDao) {
+		this.parkingDao = parkingDao;
+		this.vehiclesDao = vehiclesDao;
+	}
+
 	@Override
 	public Parking consultParking(String numberPlate) throws InvalidOperation {
 		Vehicle vehicle = vehiclesDao.getVehicle(numberPlate);
@@ -54,6 +59,7 @@ public class ParkingManagement implements IParking {
 			throw new InvalidOperation("The transaction could not be performed. Please check your"
 					+ " current balance and then try again.");
 		}
+		parkingDao.addParking(parking);
 
 	}
 
