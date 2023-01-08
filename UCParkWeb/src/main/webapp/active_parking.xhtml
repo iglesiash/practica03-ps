@@ -7,9 +7,12 @@
 </h:head>
 
 <h:body>
-	<h1>Parking history</h1>
+	<h1>Active parking</h1>
+
+    <h:link value="Home" outcome="index.xhtml"/>
+    <br></br>
     
-    <h:dataTable value="#{loggedInBean.parkingList}" var="parking" cellpadding="4"
+    <h:dataTable value="#{loggedInBean.getParkingList}" var="parking" cellpadding="4"
     cellspacing="0" rules="all" style="border:solid 1px">
         <h:column>
             <f:facet name="header">

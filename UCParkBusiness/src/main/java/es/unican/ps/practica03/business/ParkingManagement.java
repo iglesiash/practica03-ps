@@ -59,8 +59,8 @@ public class ParkingManagement implements IParking {
 			throw new InvalidOperation("The transaction could not be performed. Please check your"
 					+ " current balance and then try again.");
 		}
+		
 		parkingDao.addParking(parking);
-
 	}
 
 	@Override

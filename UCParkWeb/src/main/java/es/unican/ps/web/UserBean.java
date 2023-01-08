@@ -1,18 +1,20 @@
 package es.unican.ps.web;
 
-import com.google.inject.Inject;
+import java.io.Serializable;
 
 import es.unican.ps.practica03.business.IAnonymousUserRemote;
 import es.unican.ps.practica03.model.User;
-import jakarta.enterprise.context.RequestScoped;
+import jakarta.ejb.EJB;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
 
+@SuppressWarnings("serial")
 @Named
-@RequestScoped
-public class UserBean {
+@ApplicationScoped
+public class UserBean implements Serializable {
 
-	@Inject
-	private IAnonymousUserRemote userManagement;
+	@EJB
+	private IAnonymousUserRemote anonymousUserRemote;
 	
 	private String email;
 	private String password;
@@ -38,9 +40,13 @@ public class UserBean {
 
 	public String login() {
 		user = new User(email, password);
-		if (userManagement.login(user) == null) {
+		if (anonymousUserRemote.login(user) == null) {
 			return "register.xhtml";
 		}
-		return "index.xhtml";
+		return "login.xhtml";
 	}
+	
+	public String register() {
+		return "login.xhtml";
+	} 
 }

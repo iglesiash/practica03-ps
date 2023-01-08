@@ -1,5 +1,7 @@
 package es.unican.ps.practica03.business;
 
+import java.util.List;
+
 import es.unican.ps.practica03.model.User;
 import es.unican.ps.practica03.model.Vehicle;
 import es.unican.ps.practica03.persistence.IUsersDAO;
@@ -33,6 +35,16 @@ public class VehicleManagement implements IVehicle {
 		usersDao.modifyUser(owner);
 
 		return vehiclesDao.deleteVehicle(vehicle.getNumberPlate());
+	}
+	
+	@Override
+	public Vehicle getVehicleByNumberPlate(String numberPlate) {
+		return vehiclesDao.getVehicle(numberPlate);
+	}
+
+	@Override
+	public List<Vehicle> getAllVehicles() {
+		return vehiclesDao.getVehicles();
 	}
 
 }

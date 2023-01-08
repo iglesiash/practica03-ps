@@ -8,6 +8,9 @@
 
 <h:body>
 	<h1>New parking</h1>
+
+    <h:link value="€œHome"€ outcome="€œindex.xhtml"€/>
+    <br></br>
 	<h:form>
 		<h:panelGrid columns="2">
 			<h:outputLabel value="Number plate" />
@@ -16,7 +19,7 @@
 			<h:outputLabel value="Minutes" />
 			<h:inputText value="#{userBean.minutes}" />
 			
-			<h:commandButton value="Save" action="#{loggedInBean.newParking}" />
+			<h:commandButton value="Save" action="#{loggedInBean.saveNewParking}" />
 		</h:panelGrid>
 	</h:form>
 </h:body>
