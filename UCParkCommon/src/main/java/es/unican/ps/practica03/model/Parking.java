@@ -4,12 +4,13 @@ import java.util.Calendar;
 import java.util.Date;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Transient;
 
+@Entity
 public class Parking {
 	
 	@Id @GeneratedValue 
@@ -24,7 +25,7 @@ public class Parking {
 	@Transient // Not persisted (just for the timer)
 	private Date finishingTime;
 	
-	@OneToOne @JoinColumn(name="id")
+	@JoinColumn(name="vehicle_fk")
 	private Vehicle vehicle;
 
 	/**
@@ -123,8 +124,8 @@ public class Parking {
 	
 	/**
 	 * Returns the finishing time of the parking
-	 * @param startingTime The starting time of the parking
-	 * @param minutes The minutes of the parking
+	 * @param startingTime: the starting time of the parking
+	 * @param minutes: the minutes of the parking
 	 * @return The finishing time of the parking
 	 */
 	private Date finishingTime(Date startingTime, int minutes) {

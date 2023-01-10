@@ -3,10 +3,10 @@ package es.unican.ps.practica03.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 
 @SuppressWarnings("serial")
 @Entity
@@ -18,7 +18,7 @@ public class Report implements Serializable {
 	private double price;
 	private String cause;
 	
-	@Column(name = "vehicle")
+	@JoinColumn(name = "vehicle_fk")
 	private Vehicle reportedVehicle;
 	
 	public Report() {}

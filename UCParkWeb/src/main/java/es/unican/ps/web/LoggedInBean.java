@@ -32,6 +32,22 @@ public class LoggedInBean {
 	private int minutes;
 	private List<Parking> parkingList;
 	
+	public String getNumberPlate() {
+		return numberPlate;
+	}
+
+	public void setNumberPlate(String numberPlate) {
+		this.numberPlate = numberPlate;
+	}
+
+	public int getMinutes() {
+		return minutes;
+	}
+
+	public void setMinutes(int minutes) {
+		this.minutes = minutes;
+	}
+
 	public LoggedInBean() {}
 	
 	@PostConstruct

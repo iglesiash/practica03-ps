@@ -10,7 +10,7 @@ import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 
 @Stateless
-public class VehicleManagement implements IVehicle {
+public class VehicleManagement implements IVehicleRemote, IVehicleLocal {
 	
 	@EJB
 	private IVehiclesDAO vehiclesDao;

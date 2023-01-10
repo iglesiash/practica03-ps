@@ -10,7 +10,7 @@ import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 
 @Stateless
-public class ParkingManagement implements IParking {
+public class ParkingManagement implements IParkingRemote, IParkingLocal {
 
 	@EJB
 	private IParkingDAO parkingDao;

@@ -9,7 +9,7 @@ import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 
 @Stateless
-public class ReportManagement implements IReport {
+public class ReportManagement implements IReportLocal, IReportRemote {
 	
 	@EJB
 	private IReportsDAO reportsDao;

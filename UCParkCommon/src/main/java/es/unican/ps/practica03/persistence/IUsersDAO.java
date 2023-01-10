@@ -3,7 +3,9 @@ package es.unican.ps.practica03.persistence;
 import java.util.List;
 
 import es.unican.ps.practica03.model.User;
+import jakarta.ejb.Remote;
 
+@Remote
 public interface IUsersDAO {
 	
 	/**

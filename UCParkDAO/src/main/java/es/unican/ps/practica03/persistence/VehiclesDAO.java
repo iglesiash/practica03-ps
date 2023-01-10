@@ -3,12 +3,14 @@ package es.unican.ps.practica03.persistence;
 import java.util.List;
 
 import es.unican.ps.practica03.model.Vehicle;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 
+@Stateless
 public class VehiclesDAO implements IVehiclesDAO {
 
 	@PersistenceContext(unitName = "UCParkPU")

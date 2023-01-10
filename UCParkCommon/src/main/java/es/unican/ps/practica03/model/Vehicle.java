@@ -8,7 +8,6 @@ import java.util.Stack;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Transient;
 
@@ -25,13 +24,13 @@ public class Vehicle implements Serializable {
 	@Transient // Not persisted
 	private Parking activeParking;
 	
-	@OneToMany @JoinColumn(name="owner")
+	@OneToMany
 	private Stack<Parking> parkingHistory;
 	
-	@OneToMany @JoinColumn(name="vehicle")
+	@OneToMany
 	private List<Report> currentReports;
 	
-	@ManyToOne @JoinColumn(name="email")
+	@JoinColumn(name="owner_fk")
 	private User owner;
 	
 	public Vehicle () {}

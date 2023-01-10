@@ -20,7 +20,7 @@ public class User implements Serializable {
 	private String password;
 
 	@OneToMany @JoinColumn (name = "owner")
-	private List<PaymentMethod> paymentMethods;
+	private List<PaymentMethod> PaymentMethods;
 	
 	@OneToMany @JoinColumn (name = "owner")
 	private List<Vehicle> vehicles;
@@ -28,10 +28,12 @@ public class User implements Serializable {
 	@Transient
 	private double balance;
 
+	
+	public User() { }
 	public User(String email, String password) {
 		this.email = email;
 		this.password = password;
-		paymentMethods = new LinkedList<PaymentMethod>();
+		PaymentMethods = new LinkedList<PaymentMethod>();
 		vehicles = new LinkedList<Vehicle>();
 		
 		balance = 0;
@@ -54,11 +56,11 @@ public class User implements Serializable {
 	}
 
 	public List<PaymentMethod> getPaymentMethods() {
-		return paymentMethods;
+		return PaymentMethods;
 	}
 
-	public void setPaymentMethods(List<PaymentMethod> paymentMethods) {
-		this.paymentMethods = paymentMethods;
+	public void setPaymentMethods(List<PaymentMethod> PaymentMethods) {
+		this.PaymentMethods = PaymentMethods;
 	}
 
 	public List<Vehicle> getVehicles() {
@@ -102,8 +104,8 @@ public class User implements Serializable {
 		return true;
 	}
 	
-	public void addPaymentMethod(PaymentMethod paymentMethod) {
-		paymentMethods.add(paymentMethod);
+	public void addPaymentMethod(PaymentMethod PaymentMethod) {
+		PaymentMethods.add(PaymentMethod);
 	}
 	
 }
