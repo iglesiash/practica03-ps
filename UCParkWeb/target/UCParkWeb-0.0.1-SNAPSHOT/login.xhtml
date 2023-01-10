@@ -12,11 +12,10 @@
 	<h:form>
 		<h:panelGrid columns="2">
 			<h:outputLabel value="E-mail" />
-			<h:inputText value="#{userBean.email}" />
+			<h:inputText value="#{anonymousBean.email}" />
 			<h:outputLabel value="Password" />
-			<h:inputSecret value="#{userBean.password}" />
-			<h:commandButton value="Login" action="#{userBean.login}" />
-			<h:commandButton value="Sign up" action="#{userBean.signUp}" />
+			<h:inputSecret value="#{anonymousBean.password}" />
+			<h:commandButton value="Login" action="#{anonymousBean.login}" />
 		</h:panelGrid>
 	</h:form>
 </h:body>

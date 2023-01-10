@@ -1,16 +1,21 @@
 package es.unican.ps.web;
 
+import java.io.Serializable;
+
 import es.unican.ps.practica03.business.IAnonymousUserRemote;
 import es.unican.ps.practica03.model.Card;
 import es.unican.ps.practica03.model.PaymentMethod;
 import es.unican.ps.practica03.model.User;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 
+@SuppressWarnings("serial")
 @Named
-@ApplicationScoped
-public class UserBean {
+@SessionScoped
+public class AnonymousBean implements Serializable {
 
 	@EJB
 	private IAnonymousUserRemote anonymousUserRemote;
@@ -21,9 +26,9 @@ public class UserBean {
 	private String cardNumber;
 	private String cvc;
 	private String owner;
-	
-	
-	
+
+	public AnonymousBean() { }
+
 	public User getUser() {
 		return user;
 	}
@@ -55,8 +60,6 @@ public class UserBean {
 	public void setOwner(String owner) {
 		this.owner = owner;
 	}
-
-	public UserBean() { }
 	
 	public String getEmail() {
 		return email;
@@ -74,10 +77,8 @@ public class UserBean {
 		this.password = password;
 	}
 
-	public String login() {
-		user = new User(email, password);
-		
-		return anonymousUserRemote.login(user) == null ? "signup.xhtml" : "index.xhtml";
+	public String login() {		
+		return anonymousUserRemote.login(email, password) == null ? "login.xhtml" : "index.xhtml";
 	}
 	
 	public String signUp() {

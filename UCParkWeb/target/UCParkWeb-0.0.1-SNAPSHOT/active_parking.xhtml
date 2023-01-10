@@ -9,38 +9,15 @@
 <h:body>
 	<h1>Active parking</h1>
 
-    <h:link value="Home" outcome="index.xhtml"/>
+    <h:outputLabel value="New parking" />
     <br></br>
-    
-    <h:dataTable value="#{loggedInBean.getParkingList}" var="parking" cellpadding="4"
-    cellspacing="0" rules="all" style="border:solid 1px">
-        <h:column>
-            <f:facet name="header">
-                <h:outputText value="Vehicle"/>
-            </f:facet>
-            <h:outputText value="#{loggedInBean.numberPlate}"/>
-        </h:column>
-
-        <h:column>
-            <f:facet name="header">
-                <h:outputText value="Parked on"/>
-            </f:facet>
-            <h:outputText value="#{loggedInBean.startingDate}"/>
-        </h:column>
-
-        <h:column>
-            <f:facet name="header">
-                <h:outputText value="Minutes"/>
-            </f:facet>
-            <h:outputText value="#{loggedInBean.minutes}"/>
-        </h:column>
-
-        <h:column>
-            <f:facet name="header">
-                <h:outputText value="Price"/>
-            </f:facet>
-            <h:outputText value="#{loggedInBean.price}"/>
-        </h:column>
-    </h:dataTable>
+	<h:outputText value="#{loggedInBean.numberPlate}" />
+	<br></br>
+	<h:outputLabel value="Ends at " />
+	<h:outputText value="loggedInBean.endingDate" />
+	
+	
+	<br></br> <br></br>
+    <h:link value="Home" outcome="index.html" />
 </h:body>
 </html>

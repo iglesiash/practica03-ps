@@ -5,7 +5,6 @@ import java.util.List;
 
 import es.unican.ps.practica03.model.Parking;
 import es.unican.ps.practica03.model.PaymentMethod;
-import es.unican.ps.practica03.model.Card;
 import es.unican.ps.practica03.model.Report;
 import es.unican.ps.practica03.model.User;
 import es.unican.ps.practica03.model.Vehicle;
@@ -25,10 +24,10 @@ public class UserManagement implements IAnonymousUserLocal, IAnonymousUserRemote
 	public List<Report> consultReports(String email) {
 		List<Report> reports = new LinkedList<>();
 		User user = usersDao.getUser(email);
+		
 		for (Vehicle vehicle: user.getVehicles()) {
 			reports.addAll(vehicle.getCurrentReports());
 		}
-
 		return reports;
 	}
 
@@ -40,7 +39,6 @@ public class UserManagement implements IAnonymousUserLocal, IAnonymousUserRemote
 	@Override
 	public List<Parking> consultCurrentParkingList(String email) {
 		User user = usersDao.getUser(email);
-
 		List<Parking> currentParking = new LinkedList<>();
 		for (Vehicle vehicle: user.getVehicles()) {
 			currentParking.add(vehicle.getActiveParking());
@@ -49,10 +47,10 @@ public class UserManagement implements IAnonymousUserLocal, IAnonymousUserRemote
 	}
 
 	@Override
-	public User register(User user, PaymentMethod paymentMethod) throws InvalidOperation {
+	public User register(User user, PaymentMethod paymentMethod) {
 		User searchedUser = usersDao.getUser(user.getEmail());
 		if (searchedUser != null) {
-			throw new InvalidOperation("User is already registered");
+			return null;
 		}
 		user.addPaymentMethod(paymentMethod);
 		usersDao.addUser(user);
@@ -60,8 +58,13 @@ public class UserManagement implements IAnonymousUserLocal, IAnonymousUserRemote
 	}
 
 	@Override
-	public User login(User user) {
-		return usersDao.getUser(user.getEmail());
+	public User login(String email, String password) {
+		User user = usersDao.getUser(email);
+		if (user == null || !user.getPassword().equals(password)) {
+			return null;
+		}
+
+		return user;
 	}
 
 }

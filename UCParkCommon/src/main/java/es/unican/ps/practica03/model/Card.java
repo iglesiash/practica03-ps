@@ -5,8 +5,7 @@ import java.io.Serializable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
+import jakarta.persistence.ManyToOne;
 
 @SuppressWarnings("serial")
 @Entity
@@ -15,7 +14,10 @@ public class Card extends PaymentMethod implements Serializable {
 	private int id;
 	private String number;
 	private String cvc;
-	private String owner;
+	private String owner;	
+	
+	@ManyToOne
+	private User user;
 	
 	public Card() {
 		super();

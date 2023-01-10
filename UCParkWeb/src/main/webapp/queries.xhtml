@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:h="http://xmlns.jcp.org/jsf/html">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:h="http://xmlns.jcp.org/jsf/html">
 	
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
@@ -8,13 +9,15 @@
 
 <h:body>
 	<h1>Queries</h1>
-    
-    <h:link value="€œHome"€ outcome="€œindex.xhtml"€/>
+    <h:link value="Active parking list" outcome="active_parking.xhtml" />
     <br></br>
-    <h:commandButton value="Active parking list" action="#{loggedInBean.activeParking}" />
     
-    <!-- None of these are implemented -->
-    <h:commandButton value="Reports" action="#{loggedInBean.reports}" />
-    <h:commandButton value="Parking history" action="#{loggedInBean.history}" />
+    <!-- Neither of these are implemented -->
+    <h:link value="Reports" outcome="queries.xhtml" />
+    <br></br>
+    <h:link value="Parking history" outcome="queries.xhtml" />
+    <br></br>
+    <br></br>
+    <h:link value="Home" outcome="index.html" />
 </h:body>
 </html>

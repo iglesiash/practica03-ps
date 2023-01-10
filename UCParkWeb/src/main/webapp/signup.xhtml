@@ -11,21 +11,21 @@
 	<h:form>
 		<h:panelGrid columns="2">
 			<h:outputLabel value="E-mail" />
-			<h:inputText value="#{userBean.email}" />
+			<h:inputText value="#{anonymousBean.email}" />
 
 			<h:outputLabel value="Password" />
-			<h:inputSecret value="#{userBean.password}" />
+			<h:inputSecret value="#{anonymousBean.password}" />
 
 			<h:outputLabel value="Card number" />
-			<h:inputText value="#{userBean.cardNumber}" />
+			<h:inputText value="#{anonymousBean.cardNumber}" />
 
 			<h:outputLabel value="CVC" />
-			<h:inputText value="#{userBean.cvc}" />
+			<h:inputText value="#{anonymousBean.cvc}" />
 
 			<h:outputLabel value="Owner" />
-			<h:inputText value="#{userBean.owner}" />
+			<h:inputText value="#{anonymousBean.owner}" />
 			
-			<h:commandButton value="Sign up" action="#{userBean.signUp}" />
+			<h:commandButton value="Sign up" action="#{anonymousBean.signUp}" />
 		</h:panelGrid>
 	</h:form>
 </h:body>

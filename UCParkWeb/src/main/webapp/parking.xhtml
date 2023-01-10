@@ -9,12 +9,17 @@
 <h:body>
 	<h1>Parking management</h1>
     
-    <h:link value="Home" outcome="€œindex.xhtml"€/>
+    <h:link value="New parking" outcome="new_parking.xhtml" />
     <br></br>
-    <h:commandButton value="Active parking list" action="#{loggedInBean.parking}" />
     
-    <!-- None of these two are not implemented -->
-    <h:commandButton value="New parking" action="#{loggedInBean.newParking}" />
-    <h:commandButton value="Extend parking time" action="#{loggedInBean.extendParkingTime}" />
+   	<!-- Not implemented -->
+    <h:link value="Active parking list" outcome="new_parking.xhtml" />
+    <br></br>
+   
+    <h:link value="Extend parking time" outcome="parking.xhtml" />
+    <br></br>
+    
+	<br></br>
+    <h:link value="Home" outcome="index.html" />
 </h:body>
 </html>
