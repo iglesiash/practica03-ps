@@ -13,7 +13,6 @@ import jakarta.persistence.Transient;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "Ucpark_user")
 public class User implements Serializable {
 	
 	@Id private String email;
