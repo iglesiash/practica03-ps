@@ -12,14 +12,13 @@ import es.unican.ps.practica03.model.User;
 import es.unican.ps.practica03.model.Vehicle;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 @SuppressWarnings("serial")
 @Named
-@ApplicationScoped
+@SessionScoped
 public class LoggedInBean implements Serializable {
 
 	@Inject
@@ -117,8 +116,7 @@ public class LoggedInBean implements Serializable {
 		vehicle.setOwner(user);
 		
 		// Parking already active
-		Parking consultedParking = parkingManagementRemote.consultParking(numberPlate);
-		if (consultedParking != null && consultedParking.isParkingActive()) {
+		if (vehicle.isParkingActive()) {
 			return "new_parking.xhtml";
 		}
 

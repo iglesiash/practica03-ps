@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -34,6 +35,9 @@ public class Vehicle implements Serializable {
 
 	@ManyToOne @JoinColumn(name="owner_fk")
 	private User owner;
+	
+	@Column(name = "active")
+	private boolean isParkingActive;
 
 	public Vehicle () {}
 
@@ -45,6 +49,7 @@ public class Vehicle implements Serializable {
 		activeParking = null;
 		parkingHistory = new Stack<>();
 		currentReports = new LinkedList<>();
+		isParkingActive = false;
 	}
 
 	public String getNumberPlate() {
@@ -103,6 +108,10 @@ public class Vehicle implements Serializable {
 		this.currentReports = currentReports;
 	}
 
+	public boolean isParkingActive() {
+		return isParkingActive;
+	}
+
 	public boolean addParking(Parking parking) {
 		double price = parking.getMinutes() * PRICE_PER_MINUTE;
 		
@@ -110,7 +119,7 @@ public class Vehicle implements Serializable {
 		if (owner.charge(price)) {
 			parking.setPrice(price);
 			activeParking = parking;
-			activeParking.setParkingActive(true);
+			isParkingActive = true;
 			return true;
 		}
 		return false;
@@ -118,7 +127,6 @@ public class Vehicle implements Serializable {
 
 	public void finishParking() {
 		parkingHistory.add(activeParking);
-		activeParking.setParkingActive(false);
 		activeParking = null;
 	}
 

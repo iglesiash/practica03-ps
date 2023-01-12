@@ -18,6 +18,8 @@ create table Vehicle (
 	brand varchar(10) not null,
 	model varchar(10) not null,
 	owner_fk varchar(100) not null,
+    active bit default true,
+    
 	foreign key (owner_fk) references User (email) 
 );
 
@@ -32,7 +34,6 @@ create table Parking (
 	minutes int  not null,
 	price decimal(4,2),
 	vehicle_fk char(8) not null,
-    active bit default true,
 	
 	foreign key (vehicle_fk) references vehicle(numberPlate)
 );

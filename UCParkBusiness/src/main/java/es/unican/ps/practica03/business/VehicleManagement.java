@@ -59,5 +59,4 @@ public class VehicleManagement implements IVehicleRemote, IVehicleLocal {
 		
 		return vehicles;
 	}
-
 }

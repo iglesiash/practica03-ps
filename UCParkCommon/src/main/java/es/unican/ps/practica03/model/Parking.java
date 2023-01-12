@@ -28,9 +28,6 @@ public class Parking {
 	
 	@JoinColumn(name="vehicle_fk")
 	private Vehicle vehicle;
-	
-	@Column(name = "active")
-	private boolean isParkingActive;
 
 	/**
 	 * Default constructor
@@ -47,8 +44,6 @@ public class Parking {
 		this.minutes = minutes;
 		this.startingTime = startingTime;
 		this.vehicle = vehicle;
-		
-		isParkingActive = true;
 		this.finishingTime = calculateFinishingTime(startingTime, minutes);
 	}
 
@@ -130,14 +125,6 @@ public class Parking {
 
 	public void setFinishingTime(Date finishingTime) {
 		this.finishingTime = finishingTime;
-	}
-
-	public boolean isParkingActive() {
-		return isParkingActive;
-	}
-
-	public void setParkingActive(boolean isParkingActive) {
-		this.isParkingActive = isParkingActive;
 	}
 
 	/**
