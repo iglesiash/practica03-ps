@@ -35,7 +35,7 @@ public class NewParkingTest {
 		driver.quit();
 	}
 	
-	//@Test
+	@Test
 	public void newParking() {
 	    driver.get("http://localhost:8080/UCParkWeb/");
 	    driver.manage().window().setSize(new Dimension(1552, 840));
