@@ -8,7 +8,11 @@
 </h:head>
 
 <h:body>
-	<h1>Home</h1>   	
+	<h1>Home</h1>
+	
+	<h:outputLabel value="Welcome, " />
+	<h:outputText value="#{loggedInBean.email}" />
+	<br></br>
 	
     <h:link value="Queries" outcome="queries.xhtml" />
     <br></br>

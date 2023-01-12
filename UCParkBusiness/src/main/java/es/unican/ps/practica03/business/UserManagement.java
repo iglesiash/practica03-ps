@@ -66,5 +66,10 @@ public class UserManagement implements IAnonymousUserLocal, IAnonymousUserRemote
 
 		return user;
 	}
+	
+	@Override
+	public User getUserByEmail(String email) {
+		return usersDao.getUser(email);
+	}
 
 }

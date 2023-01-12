@@ -1,6 +1,7 @@
 package es.unican.ps.practica03.business;
 
 import java.util.Date;
+
 import es.unican.ps.practica03.model.Report;
 import es.unican.ps.practica03.model.Vehicle;
 import es.unican.ps.practica03.persistence.IReportsDAO;

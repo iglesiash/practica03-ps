@@ -4,11 +4,12 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
+import es.unican.ps.practica03.business.InvalidOperation;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
 @SuppressWarnings("serial")
@@ -18,16 +19,15 @@ public class User implements Serializable {
 	@Id private String email;
 	private String password;
 
-	@OneToMany @JoinColumn (name = "owner")
+	@OneToMany @JoinColumn
 	private List<PaymentMethod> paymentMethods;
 	
-	@OneToMany @JoinColumn (name = "owner")
+	@OneToMany (mappedBy = "owner", fetch = FetchType.EAGER)
 	private List<Vehicle> vehicles;
 	
 	@Transient
 	private double balance;
 
-	
 	public User() { }
 	public User(String email, String password) {
 		this.email = email;
@@ -35,7 +35,7 @@ public class User implements Serializable {
 		paymentMethods = new LinkedList<PaymentMethod>();
 		vehicles = new LinkedList<Vehicle>();
 		
-		balance = 0;
+		balance = 10;
 	}
 
 	public String getEmail() {
@@ -96,6 +96,9 @@ public class User implements Serializable {
 	}
 
 	public boolean charge(double price) {
+		if (balance == 0) {
+			throw new InvalidOperation("0");
+		}
 		if (balance - price < 0) {
 			return false;
 		}
@@ -106,5 +109,4 @@ public class User implements Serializable {
 	public void addPaymentMethod(PaymentMethod PaymentMethod) {
 		paymentMethods.add(PaymentMethod);
 	}
-	
 }

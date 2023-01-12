@@ -1,4 +1,3 @@
-
 drop database if exists ucpark;
 create database ucpark;
 
@@ -15,11 +14,10 @@ insert into User
 	values('hector@gmail.com', 'hector');
 
 create table Vehicle (
-	numberPlate char(8) primary key,
+	numberPlate char(8) primary key, -- XXXX-YYY format, where X is a number and Y a letter
 	brand varchar(10) not null,
 	model varchar(10) not null,
 	owner_fk varchar(100) not null,
-
 	foreign key (owner_fk) references User (email) 
 );
 
@@ -28,19 +26,16 @@ insert into Vehicle
 insert into Vehicle
 	values('2222-BBB', 'Audi', 'A3', 'hector@gmail.com');
 
-
 create table Parking (
 	id int primary key,
 	startTime datetime not null, 
 	minutes int  not null,
 	price decimal(4,2),
 	vehicle_fk char(8) not null,
+    active bit default true,
 	
 	foreign key (vehicle_fk) references vehicle(numberPlate)
 );
-
-insert into Parking
-	values(1, '2023-01-10 19:07', 30, 1.2, '1111-AAA');
 
 create table Report (
 	id int primary key,

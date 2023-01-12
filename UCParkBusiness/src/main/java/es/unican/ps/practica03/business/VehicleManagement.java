@@ -25,6 +25,7 @@ public class VehicleManagement implements IVehicleRemote, IVehicleLocal {
 		if (vehiclesDao.addVehicle(vehicle)) {
 			throw new InvalidOperation("This vehicle has already been registered.");
 		}
+		vehicle.setOwner(user);
 		return user.addVehicle(vehicle);
 	}
 
@@ -45,6 +46,18 @@ public class VehicleManagement implements IVehicleRemote, IVehicleLocal {
 	@Override
 	public List<Vehicle> getAllVehicles() {
 		return vehiclesDao.getVehicles();
+	}
+	
+	@Override
+	public List<Vehicle> getUserVehicles(String email) {
+		List<Vehicle> vehicles = getAllVehicles();
+		for (Vehicle vehicle: vehicles) {
+			if (!vehicle.getOwner().getEmail().equals(email)) {
+				vehicles.remove(vehicle);
+			}
+		}
+		
+		return vehicles;
 	}
 
 }

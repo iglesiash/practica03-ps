@@ -10,4 +10,5 @@ public interface IVehicle {
 	public boolean deleteVehicle(Vehicle vehicle);
 	public Vehicle getVehicleByNumberPlate(String numberPlate);
 	public List<Vehicle> getAllVehicles();
+	public List<Vehicle> getUserVehicles(String email);
 }

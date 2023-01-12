@@ -31,25 +31,24 @@ public class ParkingManagement implements IParkingRemote, IParkingLocal {
 		if (vehicle == null) {
 			throw new InvalidOperation("There are no vehicles with the inserted number plate.");
 		}
-
 		return vehicle.getActiveParking();
 	}
 
 	@Override
-	public void registerParking(Vehicle vehicle, int minutes) throws InvalidOperation {
-		if (vehicle.getActiveParking() != null) {
+	public Parking registerParking(Vehicle vehicle, int minutes) throws InvalidOperation {
+		Parking activeParking = vehicle.getActiveParking();
+		if (activeParking != null) {
 			throw new InvalidOperation("This vehicle already has an active parking.");
 		}
 
-		if (minutes > 120 || minutes <= 0) {
+		if (minutes > 120) {
 			throw new InvalidOperation("The number of minutes exceeds the overall time limit of "
-					+ "120 minutes. Please insert a valid ammount of minutes.");
+					+ "120 minutes. Please insert a valid amount of minutes.");
 		}
 
 		if (minutes <= 0) {
 			throw new InvalidOperation("The number of minutes is negative or zero. Please insert "
-					+ "a valid ammount of minutes.");
-
+					+ "a valid amount of minutes.");
 		}
 
 		Date now = new Date();
@@ -59,8 +58,10 @@ public class ParkingManagement implements IParkingRemote, IParkingLocal {
 			throw new InvalidOperation("The transaction could not be performed. Please check your"
 					+ " current balance and then try again.");
 		}
-		
+
+		vehiclesDao.modifyVehicle(vehicle);
 		parkingDao.addParking(parking);
+		return parking;
 	}
 
 	@Override
@@ -82,7 +83,7 @@ public class ParkingManagement implements IParkingRemote, IParkingLocal {
 			throw new InvalidOperation("The transaction could not be performed. Please check your"
 					+ " current balance and then try again.");
 		}
-		
+
 		vehicle.getActiveParking().setMinutes(currentMinutes + minutes);
 
 		return parkingDao.modifyParking(parking);

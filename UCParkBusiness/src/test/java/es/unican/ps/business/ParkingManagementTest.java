@@ -34,7 +34,7 @@ public class ParkingManagementTest {
 		parkingDaoMock = mock(IParkingDAO.class);
 		sut = new ParkingManagement(parkingDaoMock, vehiclesDaoMock);
 		user = new User("hgi834@alumnos.unican.es", "hector");
-		user.setBalance(2);
+		user.setBalance(10);
 	}
 	
 
@@ -51,10 +51,10 @@ public class ParkingManagementTest {
 		sut.registerParking(vehicle, minutes);
 		
 		assertNotNull(vehicle.getActiveParking());
-		assertEquals(2 - minutes * 0.01, vehicle.getOwner().getBalance());
+		assertEquals(10 - minutes * 0.01, vehicle.getOwner().getBalance());
 		
 		// UGE.2b
-		minutes = 60;
+		minutes = 91;
 		
 		assertThrows(InvalidOperation.class, () -> sut.registerParking(vehicle, minutes));
 		

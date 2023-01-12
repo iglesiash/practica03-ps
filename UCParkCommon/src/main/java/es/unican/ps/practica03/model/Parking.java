@@ -1,5 +1,6 @@
 package es.unican.ps.practica03.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -27,6 +28,9 @@ public class Parking {
 	
 	@JoinColumn(name="vehicle_fk")
 	private Vehicle vehicle;
+	
+	@Column(name = "active")
+	private boolean isParkingActive;
 
 	/**
 	 * Default constructor
@@ -44,10 +48,9 @@ public class Parking {
 		this.startingTime = startingTime;
 		this.vehicle = vehicle;
 		
-		this.finishingTime = finishingTime(startingTime, minutes);
+		isParkingActive = true;
+		this.finishingTime = calculateFinishingTime(startingTime, minutes);
 	}
-	
-	
 
 	public long getId() {
 		return id;
@@ -121,14 +124,30 @@ public class Parking {
 		this.vehicle = vehicle;
 	}
 	
-	
+	public Date getFinishingTime() {
+		return finishingTime;
+	}
+
+	public void setFinishingTime(Date finishingTime) {
+		this.finishingTime = finishingTime;
+	}
+
+	public boolean isParkingActive() {
+		return isParkingActive;
+	}
+
+	public void setParkingActive(boolean isParkingActive) {
+		this.isParkingActive = isParkingActive;
+	}
+
 	/**
-	 * Returns the finishing time of the parking
+	 * Returns the finishing time of the parking given a time and the amount of minutes to be
+	 * added.
 	 * @param startingTime: the starting time of the parking
 	 * @param minutes: the minutes of the parking
 	 * @return The finishing time of the parking
 	 */
-	private Date finishingTime(Date startingTime, int minutes) {
+	public Date calculateFinishingTime(Date startingTime, int minutes) {
 		Date finishingTime = startingTime;
 		Calendar calendar = Calendar.getInstance();
 		
@@ -137,4 +156,8 @@ public class Parking {
 		return calendar.getTime();
 	}
 	
+	public String convertEndingDateToString() {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		return formatter.format(finishingTime);
+	}
 }

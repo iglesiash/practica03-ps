@@ -7,8 +7,6 @@ import es.unican.ps.practica03.model.Card;
 import es.unican.ps.practica03.model.PaymentMethod;
 import es.unican.ps.practica03.model.User;
 import jakarta.ejb.EJB;
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 

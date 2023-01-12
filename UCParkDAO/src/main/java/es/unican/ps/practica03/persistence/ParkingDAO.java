@@ -15,9 +15,9 @@ public class ParkingDAO implements IParkingDAO {
 
 	@PersistenceContext(unitName = "UCParkPU")
 	private EntityManager em;
-	
+
 	public ParkingDAO() { }
-	
+
 	public ParkingDAO(EntityManager em) {
 		this.em = em;
 	}
