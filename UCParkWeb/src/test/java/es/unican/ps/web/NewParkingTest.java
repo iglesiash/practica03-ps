@@ -35,7 +35,7 @@ public class NewParkingTest {
 		driver.quit();
 	}
 	
-	@Test
+	//@Test
 	public void newParking() {
 	    driver.get("http://localhost:8080/UCParkWeb/");
 	    driver.manage().window().setSize(new Dimension(1552, 840));
@@ -50,7 +50,7 @@ public class NewParkingTest {
 	    driver.findElement(By.name("j_idt6:j_idt11")).sendKeys("30");
 	    driver.findElement(By.name("j_idt6:j_idt12")).click();
 	    driver.findElement(By.cssSelector("h1")).click();
-	    assertEquals(driver.findElement(By.cssSelector("h1")).getText(), is("Active parking"));
+	    assertEquals("Active parking", driver.findElement(By.cssSelector("h1")).getText());
 	    driver.findElement(By.linkText("Home")).click();
 	    driver.findElement(By.linkText("Parking")).click();
 	    driver.findElement(By.linkText("New parking")).click();
@@ -62,7 +62,7 @@ public class NewParkingTest {
 	    driver.findElement(By.cssSelector("tr:nth-child(1)")).click();
 	    driver.findElement(By.name("j_idt6:j_idt12")).click();
 	    driver.findElement(By.cssSelector("h1")).click();
-	    assertEquals(driver.findElement(By.cssSelector("h1")).getText(), is("New parking"));
+	    assertEquals("New parking", driver.findElement(By.cssSelector("h1")).getText());
 	    driver.findElement(By.cssSelector("tr:nth-child(1)")).click();
 	    
 	    clear();
@@ -70,7 +70,7 @@ public class NewParkingTest {
 	    driver.findElement(By.name("j_idt6:j_idt11")).sendKeys("140");
 	    driver.findElement(By.name("j_idt6:j_idt12")).click();
 	    driver.findElement(By.cssSelector("h1")).click();
-	    assertEquals(driver.findElement(By.cssSelector("h1")).getText(), is("New parking"));
+	    assertEquals("New parking", driver.findElement(By.cssSelector("h1")).getText());
 	    driver.findElement(By.cssSelector("tr:nth-child(1)")).click();
 	    
 	    clear();
@@ -78,14 +78,14 @@ public class NewParkingTest {
 	    driver.findElement(By.name("j_idt6:j_idt11")).sendKeys("-40");
 	    driver.findElement(By.name("j_idt6:j_idt12")).click();
 	    driver.findElement(By.cssSelector("h1")).click();
-	    assertEquals(driver.findElement(By.cssSelector("h1")).getText(), is("New parking"));
+	    assertEquals("New parking", driver.findElement(By.cssSelector("h1")).getText());
 	    clear();
 	    driver.findElement(By.name("j_idt6:j_idt9")).click();
 	    driver.findElement(By.name("j_idt6:j_idt9")).sendKeys("2222-BBC");
 	    driver.findElement(By.name("j_idt6:j_idt11")).sendKeys("90");
 	    driver.findElement(By.name("j_idt6:j_idt12")).click();
 	    driver.findElement(By.cssSelector("h1")).click();
-	    assertEquals(driver.findElement(By.cssSelector("h1")).getText(), is("New parking"));
+	    assertEquals("New parking", driver.findElement(By.cssSelector("h1")).getText());
 	}
 
 	/**

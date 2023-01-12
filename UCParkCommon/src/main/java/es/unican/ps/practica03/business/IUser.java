@@ -10,5 +10,5 @@ public interface IUser {
 	public List<Report> consultReports(String email);
 	public List<Parking> consultCurrentParkingList(String email);
 	public List<Parking> consultParkingHistory(String email);
-	User getUserByEmail(String email);
+	public User getUserByEmail(String email);
 }

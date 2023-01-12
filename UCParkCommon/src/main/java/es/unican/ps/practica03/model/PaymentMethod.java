@@ -16,7 +16,8 @@ public abstract class PaymentMethod implements Serializable {
 	@Id @GeneratedValue
 	private long id;
 	
-	public PaymentMethod () {}
-	
-	
+	/**
+	 * Default constructor.
+	 */
+	public PaymentMethod () {}	
 }

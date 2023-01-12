@@ -22,6 +22,7 @@ public class ReportManagement implements IReportLocal, IReportRemote {
 
 	@Override
 	public void reportParking(Vehicle vehicle, String description, double price) {
+		// Vehicle does not have an active parking
 		if (vehicle.getActiveParking() == null) {
 			Report report = new Report(new Date(), price, description, vehicle);
 

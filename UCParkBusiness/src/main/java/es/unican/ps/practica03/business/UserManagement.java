@@ -25,6 +25,7 @@ public class UserManagement implements IAnonymousUserLocal, IAnonymousUserRemote
 		List<Report> reports = new LinkedList<>();
 		User user = usersDao.getUser(email);
 		
+		// Loops all the vehicles of the user and adds the reports to the list
 		for (Vehicle vehicle: user.getVehicles()) {
 			reports.addAll(vehicle.getCurrentReports());
 		}
@@ -40,6 +41,8 @@ public class UserManagement implements IAnonymousUserLocal, IAnonymousUserRemote
 	public List<Parking> consultCurrentParkingList(String email) {
 		User user = usersDao.getUser(email);
 		List<Parking> currentParking = new LinkedList<>();
+
+		// Loops all the vehicles of the user and adds the active parking to the list
 		for (Vehicle vehicle: user.getVehicles()) {
 			currentParking.add(vehicle.getActiveParking());
 		}
@@ -49,9 +52,13 @@ public class UserManagement implements IAnonymousUserLocal, IAnonymousUserRemote
 	@Override
 	public User register(User user, PaymentMethod paymentMethod) {
 		User searchedUser = usersDao.getUser(user.getEmail());
+
+		// This user is already in the system
 		if (searchedUser != null) {
 			return null;
 		}
+
+		// User is added to the DAO
 		user.addPaymentMethod(paymentMethod);
 		usersDao.addUser(user);
 		return user;
@@ -60,6 +67,8 @@ public class UserManagement implements IAnonymousUserLocal, IAnonymousUserRemote
 	@Override
 	public User login(String email, String password) {
 		User user = usersDao.getUser(email);
+		
+		// The user does not exist or the password is incorrect
 		if (user == null || !user.getPassword().equals(password)) {
 			return null;
 		}
@@ -69,6 +78,8 @@ public class UserManagement implements IAnonymousUserLocal, IAnonymousUserRemote
 	
 	@Override
 	public User getUserByEmail(String email) {
+
+		// Gets user from the DAO
 		return usersDao.getUser(email);
 	}
 

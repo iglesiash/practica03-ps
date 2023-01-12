@@ -36,9 +36,9 @@ public class Parking {
 	
 	/**
 	 * Constructor
-	 * @param minutes The minutes of the parking
-	 * @param startingTime The starting time of the parking 
-	 * @param vehicle The parked vehicle
+	 * @param minutes: the minutes of the parking
+	 * @param startingTime: the starting time of the parking 
+	 * @param vehicle: the parked vehicle
 	 */
 	public Parking(int minutes, Date startingTime, Vehicle vehicle) {
 		this.minutes = minutes;
@@ -47,78 +47,90 @@ public class Parking {
 		this.finishingTime = calculateFinishingTime(startingTime, minutes);
 	}
 
+	/**
+	 * Returns the parking id.
+	 * @return the parking id
+	 */
 	public long getId() {
 		return id;
 	}
 
+	/**
+	 * Sets the parking id.
+	 * @param id: the id to be set
+	 */
 	public void setId(long id) {
 		this.id = id;
 	}
 
 	/**
-	 * Returns the minutes of the parking
-	 * @return The minutes of the parking
+	 * Returns the minutes of the parking.
+	 * @return the minutes of the parking
 	 */
 	public int getMinutes() {
 		return minutes;
 	}
 	
 	/**
-	 * Sets the minutes of the parking
-	 * @param minutes The minutes to be set
+	 * Sets the minutes of the parking.
+	 * @param minutes the minutes to be set
 	 */
 	public void setMinutes(int minutes) {
 		this.minutes = minutes;
 	}
 
 	/**
-	 * Returns the price of the parking
-	 * @return The price of the parking
+	 * Returns the price of the parking.
+	 * @return the price of the parking
 	 */
 	public double getPrice() {
 		return price;
 	}
 
 	/**
-	 * Sets the price of the parking
-	 * @param price The price to be set
+	 * Sets the price of the parking.
+	 * @param price the price to be set
 	 */
 	public void setPrice(double price) {
 		this.price = price;
 	}
 
 	/**
-	 * Returns the starting time of the parking
-	 * @return The starting time of the parking
+	 * Returns the starting time of the parking.
+	 * @return the starting time of the parking
 	 */
 	public Date getStartingTime() {
 		return startingTime;
 	}
 
 	/**
-	 * Sets the starting time of the parking
-	 * @param startingTime The starting time to be set
+	 * Sets the starting time of the parking.
+	 * @param startingTime the starting time to be set
 	 */
 	public void setStartingTime(Date startingTime) {
 		this.startingTime = startingTime;
 	}
 
 	/**
-	 * Returns the finishing time of the parking
-	 * @return The finishing time of the parking
+	 * Returns the finishing time of the parking.
+	 * @return the finishing time of the parking
 	 */
 	public Vehicle getVehicle() {
 		return vehicle;
 	}
 
 	/**
-	 * Sets the vehicle of the parking
-	 * @param vehicle The vehicle to be set
+	 * Sets the vehicle of the parking.
+	 * @param vehicle the vehicle to be set
 	 */
 	public void setVehicle(Vehicle vehicle) {
 		this.vehicle = vehicle;
 	}
 	
+	/**
+	 * Returns the finishing time of the parking.
+	 * @return the finishing time of the parking
+	 */
 	public Date getFinishingTime() {
 		return finishingTime;
 	}
@@ -132,7 +144,7 @@ public class Parking {
 	 * added.
 	 * @param startingTime: the starting time of the parking
 	 * @param minutes: the minutes of the parking
-	 * @return The finishing time of the parking
+	 * @return the finishing time of the parking
 	 */
 	public Date calculateFinishingTime(Date startingTime, int minutes) {
 		Date finishingTime = startingTime;
