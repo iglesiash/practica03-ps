@@ -18,15 +18,15 @@ create table Vehicle (
 	brand varchar(10) not null,
 	model varchar(10) not null,
 	owner_fk varchar(100) not null,
-    active bit default true,
+    active bit null default false,
     
 	foreign key (owner_fk) references User (email) 
 );
 
 insert into Vehicle
-	values('1111-AAA', 'Peugeot', '205', 'hector@gmail.com');
+	values('1111-AAA', 'Peugeot', '205', 'hector@gmail.com', 0);
 insert into Vehicle
-	values('2222-BBB', 'Audi', 'A3', 'hector@gmail.com');
+	values('2222-BBB', 'Audi', 'A3', 'hector@gmail.com', 0);
 
 create table Parking (
 	id int primary key,
